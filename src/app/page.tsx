@@ -368,8 +368,20 @@ export default function Home() {
       }
     });
 
-    document.getElementById('xConnectBtn')?.addEventListener('click', () => {
-      window.location.href = '/api/auth/signin/twitter?callbackUrl=/';
+    document.getElementById('xConnectBtn')?.addEventListener('click', async () => {
+      // Create a form and submit it to trigger immediate OAuth redirect
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/api/auth/signin/twitter';
+      
+      const csrfInput = document.createElement('input');
+      csrfInput.type = 'hidden';
+      csrfInput.name = 'callbackUrl';
+      csrfInput.value = '/';
+      form.appendChild(csrfInput);
+      
+      document.body.appendChild(form);
+      form.submit();
     });
 
     const walletPopup = document.getElementById('walletSelectionPopup');
