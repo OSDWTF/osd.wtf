@@ -135,7 +135,7 @@ export default function PrivacyPolicy() {
       <h2>14. Final Note</h2>
       <p>OSD.WTF is built for transparency and creative freedom.</p>
       <p>We encourage open dialogue — not surveillance.</p>
-      <p>We collect as little as possible, respect consent, and protect our community's trust.</p>
+      <p>We collect as little as possible, respect consent, and protect our community&apos;s trust.</p>
       <p style={{ fontStyle: 'italic' }}>Join the conversation, responsibly.</p>
     </article>
   );

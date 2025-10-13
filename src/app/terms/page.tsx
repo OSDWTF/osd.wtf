@@ -40,7 +40,7 @@ export default function TermsOfUse() {
       <h2>5. Recording and Clip Policy</h2>
       <ul>
         <li>OSD.WTF hosts may enable or disable recording on X (Twitter) Spaces at their discretion.</li>
-        <li>When recording is active, X will display a "REC" indicator visible to all participants.</li>
+        <li>When recording is active, X will display a &quot;REC&quot; indicator visible to all participants.</li>
         <li>Even when a Space is not publicly recorded, X retains internal copies for 30–120 days for moderation.</li>
         <li>All OSD.WTF Spaces are public. Anyone with an X account can join, listen, and speak if granted &quot;speaker&quot; access by a host.</li>
         <li>Any retrieved clip will not be used or published without obtaining verbal or written consent from identifiable participants.</li>
@@ -87,7 +87,7 @@ export default function TermsOfUse() {
 
       <h2>13. Changes to Terms</h2>
       <p>We may revise or update these Terms at any time.</p>
-      <p>When we make changes, we will update the "Effective Date" at the top of this page.</p>
+      <p>When we make changes, we will update the &quot;Effective Date&quot; at the top of this page.</p>
       <p>Continued use of the site or participation in Spaces after changes are posted constitutes acceptance of the revised Terms.</p>
 
       <h2>14. Governing Law</h2>
@@ -99,7 +99,7 @@ export default function TermsOfUse() {
       📩 Email: <a href="mailto:privacy@osd.wtf">privacy@osd.wtf</a><br />
       🕊 X (Twitter): <a href="https://x.com/OSDWTF" target="_blank">@OSDWTF</a></p>
 
-      <p style={{ marginTop: 40, fontStyle: 'italic' }}>In short: OSD.WTF is a public broadcast space built on trust, respect, and creative freedom. Join the conversation, speak your truth, and remember — it's live, it's public, and it's yours to shape responsibly.</p>
+      <p style={{ marginTop: 40, fontStyle: 'italic' }}>In short: OSD.WTF is a public broadcast space built on trust, respect, and creative freedom. Join the conversation, speak your truth, and remember — it&apos;s live, it&apos;s public, and it&apos;s yours to shape responsibly.</p>
     </article>
   );
 }

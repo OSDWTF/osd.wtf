@@ -360,7 +360,7 @@ export default function Home() {
             errorEl.style.display = 'block';
           }
         }
-      } catch (e) {
+      } catch {
         if (errorEl) {
           errorEl.textContent = 'Network error';
           errorEl.style.display = 'block';

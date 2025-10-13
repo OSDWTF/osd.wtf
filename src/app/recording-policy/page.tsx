@@ -12,7 +12,7 @@ export default function RecordingPolicy() {
       <h2>1. Overview</h2>
       <p>This policy explains how OSD.WTF handles the recording, archiving, and use of audio content from live Spaces and other broadcasts.</p>
       <p>Our goal is to respect community consent while preserving cultural moments worth sharing.</p>
-      <p>We operate transparently — if something is being recorded, you'll know.</p>
+      <p>We operate transparently — if something is being recorded, you&apos;ll know.</p>
 
       <h2>2. Recording Status</h2>
       <ul>
@@ -28,11 +28,11 @@ export default function RecordingPolicy() {
       <p>This process allows OSD.WTF to preserve key moments from long-running or 24-hour Spaces while maintaining respect for participant privacy.</p>
 
       <h2>4. Clip Creation & Usage</h2>
-      <p>OSD.WTF may create short audio or video excerpts ("Clips") from archived Spaces for cultural, educational, or promotional use.</p>
+      <p>OSD.WTF may create short audio or video excerpts (&quot;Clips&quot;) from archived Spaces for cultural, educational, or promotional use.</p>
       <p>When doing so:</p>
       <ul>
         <li>Participants whose voice, likeness, or identifiable comments appear in a clip will be contacted for consent before public release.</li>
-        <li>For pre-scheduled shows (like "Who TF is ___?"), participants may grant consent in advance.</li>
+        <li>For pre-scheduled shows (like &quot;Who TF is ___?&quot;), participants may grant consent in advance.</li>
         <li>If we cannot reach a participant, and they later request removal, the clip may be taken down at our discretion.</li>
         <li>Clips may appear on official OSD.WTF channels (website, X, YouTube, Spotify, etc.), but will never be sold or licensed commercially without direct agreement.</li>
       </ul>
@@ -49,7 +49,7 @@ export default function RecordingPolicy() {
       
       <div className="disclaimer-box">
         <strong>Live Room Disclaimer:</strong><br />
-        <li>&quot;Fair Use&quot; may apply to clips used for commentary, education, or criticism.</li> purposes. Views are speakers' own and do not represent OSD.WTF."
+        &quot;This Space is for educational and entertainment purposes. Views are speakers&apos; own and do not represent OSD.WTF.&quot;
       </div>
 
       <h2>7. Takedown & Removal Requests</h2>
