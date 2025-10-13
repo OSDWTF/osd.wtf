@@ -36,7 +36,7 @@ body {
 }
 
 body.homepage {
-  background-image: url('/OSD.WTF.png');
+  background-image: url('/OSD.WTF.png?v=2');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
