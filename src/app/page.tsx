@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import Link from "next/link";
-import { getAddress, AddressPurpose } from 'sats-connect';
+import { getAddress, AddressPurpose, BitcoinNetworkType } from 'sats-connect';
 
 export default function Home() {
   useEffect(() => {
@@ -479,7 +479,7 @@ export default function Home() {
                 purposes: [AddressPurpose.Ordinals, AddressPurpose.Payment],
                 message: 'Connect to OSD.WTF',
                 network: {
-                  type: 'Mainnet'
+                  type: BitcoinNetworkType.Mainnet
                 }
               },
               onFinish: (response: { addresses: Array<{ purpose: string; address: string; publicKey?: string }> }) => {
