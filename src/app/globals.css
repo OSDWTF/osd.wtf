@@ -34,9 +34,11 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto;
+  background-attachment: fixed;
   font-family: 'Courier New', monospace;
   color: #ffffff;
   min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
