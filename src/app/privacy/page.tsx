@@ -114,7 +114,7 @@ export default function PrivacyPolicy() {
         <li>We never provide individual user data to sponsors or partners.</li>
       </ul>
 
-      <h2>10. Children's Privacy</h2>
+      <h2>10. Children&apos;s Privacy</h2>
       <p>OSD.WTF is intended for adults 18 years or older.</p>
       <p>We do not knowingly collect personal information from minors.</p>
       <p>If a parent or guardian believes their child has submitted personal information, contact <a href="mailto:privacy@osd.wtf">privacy@osd.wtf</a> to request deletion.</p>

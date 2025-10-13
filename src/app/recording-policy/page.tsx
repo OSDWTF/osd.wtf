@@ -76,7 +76,7 @@ export default function RecordingPolicy() {
 
       <h2>10. Policy Updates</h2>
       <p>We may revise this policy to reflect changes in technology, platform rules, or community standards.</p>
-      <p>All updates will appear here with a new "Last Updated" date.</p>
+      <p>All updates will appear here with a new &quot;Last Updated&quot; date.</p>
       <p>Continued participation after an update constitutes acceptance of the revised policy.</p>
 
       <h2>11. Contact</h2>
