@@ -369,7 +369,7 @@ export default function Home() {
     });
 
     document.getElementById('xConnectBtn')?.addEventListener('click', () => {
-      window.location.href = '/api/auth/signin';
+      window.location.href = '/api/auth/signin/twitter?callbackUrl=/';
     });
 
     const walletPopup = document.getElementById('walletSelectionPopup');
