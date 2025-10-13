@@ -5,6 +5,9 @@ import { getAddress, AddressPurpose, BitcoinNetworkType } from 'sats-connect';
 
 export default function Home() {
   useEffect(() => {
+    // Add homepage class to body for fixed background
+    document.body.classList.add('homepage');
+    
     const dropdownTrigger = document.getElementById('dropdownTrigger');
     const dropdownMenu = document.getElementById('dropdownMenu');
     const dropdownItems = Array.from(document.querySelectorAll('.dropdown-item')) as HTMLElement[];
@@ -570,6 +573,9 @@ export default function Home() {
     document.getElementById('okxBtn')?.addEventListener('click', () => connectWallet('okx'));
 
     return () => {
+      // Remove homepage class on cleanup
+      document.body.classList.remove('homepage');
+      
       document.removeEventListener('click', closeOnOutside);
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
