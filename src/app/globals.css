@@ -33,7 +33,7 @@ body {
   background-image: url('/OSD.WTF.png');
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: auto;
   font-family: 'Courier New', monospace;
   color: #ffffff;
   min-height: 100vh;
