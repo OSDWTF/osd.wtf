@@ -37,10 +37,11 @@ body {
 
 body.homepage {
   background-image: url('/OSD.WTF.png?v=2');
-  background-position: center calc(50% + 8vh);
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: clamp(380px, 64vmin, 1200px);
+  background-size: contain;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -52,11 +53,11 @@ body.homepage {
 }
 
 @media (min-width: 769px){
-  body.homepage{ background-position: center calc(50% + 10vh); background-size: clamp(480px, 50vmin, 1200px); }
+  body.homepage{ background-position: center center; background-size: contain; }
 }
 
 @media (min-width: 1280px){
-  body.homepage{ background-position: center calc(50% + 12vh); background-size: clamp(560px, 42vw, 1400px); }
+  body.homepage{ background-position: center center; background-size: contain; }
 }
 
 body::before {
