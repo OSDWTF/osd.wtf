@@ -48,7 +48,7 @@ export default function Home() {
       lastToggle = Date.now();
       toggleDropdown();
     };
-    dropdownTrigger?.addEventListener('pointerup', onPointerUp as any, { passive: false } as any);
+    dropdownTrigger?.addEventListener('pointerup', onPointerUp as EventListener, { passive: false });
     dropdownTrigger?.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); if (Date.now() - lastToggle > 250) toggleDropdown(); });
 
     const closeOnOutside = (e: MouseEvent) => {
@@ -107,7 +107,7 @@ export default function Home() {
 
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => positionRedDot()) : null;
     if (ro && dropdownTrigger) ro.observe(dropdownTrigger);
-    const fonts = (document as any).fonts;
+    const fonts = (document as Document & { fonts?: { ready: Promise<void> } }).fonts;
     if (fonts?.ready) { fonts.ready.then(() => positionRedDot()); }
     const onVis = () => { if (!document.hidden) positionRedDot(); };
     document.addEventListener('visibilitychange', onVis);
@@ -126,10 +126,10 @@ export default function Home() {
       navContainer.style.right = 'auto';
       navContainer.style.bottom = 'auto';
       navContainer.style.transform = 'none';
-      let startX = clientX;
-      let startY = clientY;
-      let baseLeft = rect.left;
-      let baseTop = rect.top;
+      const startX = clientX;
+      const startY = clientY;
+      const baseLeft = rect.left;
+      const baseTop = rect.top;
       let isDragging = true;
       const onMove = (mx: number, my: number) => {
         if (!isDragging) return;
@@ -236,7 +236,9 @@ export default function Home() {
         dropdownItems.forEach(i => i.classList.remove('active'));
         item.classList.add('active');
         const mainNav = dropdownTrigger?.querySelector('.nav-item') as HTMLElement | null;
-        if (mainNav) mainNav.firstChild && (mainNav.firstChild.textContent = `X: \\ OSD \\ ${text?.replace('\\ ','')}`);
+        if (mainNav && mainNav.firstChild) {
+          mainNav.firstChild.textContent = `X: \\ OSD \\ ${text?.replace('\\ ','')}`;
+        }
       })
     });
 
@@ -378,9 +380,9 @@ export default function Home() {
       const xverseBtn = document.getElementById('xverseBtn') as HTMLElement | null;
       const okxBtn = document.getElementById('okxBtn') as HTMLElement | null;
 
-      const hasUnisat = typeof (window as any).unisat !== 'undefined';
-      const hasXverse = typeof (window as any).XverseProviders !== 'undefined' || typeof (window as any).BitcoinProvider !== 'undefined';
-      const hasOkx = typeof (window as any).okxwallet?.bitcoin !== 'undefined';
+      const hasUnisat = typeof (window as Window & { unisat?: unknown }).unisat !== 'undefined';
+      const hasXverse = typeof (window as Window & { XverseProviders?: unknown; BitcoinProvider?: unknown }).XverseProviders !== 'undefined' || typeof (window as Window & { BitcoinProvider?: unknown }).BitcoinProvider !== 'undefined';
+      const hasOkx = typeof (window as Window & { okxwallet?: { bitcoin?: unknown } }).okxwallet?.bitcoin !== 'undefined';
 
       if (unisatBtn) {
         if (!hasUnisat) {
@@ -443,7 +445,7 @@ export default function Home() {
         let pubkey = '';
 
         if (walletType === 'unisat') {
-          const unisat = (window as any).unisat;
+          const unisat = (window as Window & { unisat?: { requestAccounts: () => Promise<string[]>; getPublicKey: () => Promise<string> } }).unisat;
           if (!unisat) {
             window.open('https://unisat.io/download', '_blank');
             if (walletError) {
@@ -457,11 +459,11 @@ export default function Home() {
           address = accounts[0];
           try {
             pubkey = await unisat.getPublicKey();
-          } catch (e) {
+          } catch {
             console.warn('Could not get pubkey from Unisat');
           }
         } else if (walletType === 'xverse') {
-          const hasXverse = typeof (window as any).XverseProviders !== 'undefined' || typeof (window as any).BitcoinProvider !== 'undefined';
+          const hasXverse = typeof (window as Window & { XverseProviders?: unknown; BitcoinProvider?: unknown }).XverseProviders !== 'undefined' || typeof (window as Window & { BitcoinProvider?: unknown }).BitcoinProvider !== 'undefined';
           if (!hasXverse) {
             window.open('https://www.xverse.app/download', '_blank');
             if (walletError) {
@@ -480,8 +482,8 @@ export default function Home() {
                   type: 'Mainnet'
                 }
               },
-              onFinish: (response: any) => {
-                const ordinalsAddress = response.addresses.find((addr: any) => addr.purpose === AddressPurpose.Ordinals);
+              onFinish: (response: { addresses: Array<{ purpose: string; address: string; publicKey?: string }> }) => {
+                const ordinalsAddress = response.addresses.find((addr) => addr.purpose === AddressPurpose.Ordinals);
                 address = ordinalsAddress?.address || response.addresses[0]?.address || '';
                 pubkey = ordinalsAddress?.publicKey || response.addresses[0]?.publicKey || '';
                 resolve(true);
@@ -492,7 +494,7 @@ export default function Home() {
             });
           });
         } else if (walletType === 'okx') {
-          const okxwallet = (window as any).okxwallet?.bitcoin;
+          const okxwallet = (window as Window & { okxwallet?: { bitcoin?: { requestAccounts: () => Promise<string[]>; getPublicKey: () => Promise<string> } } }).okxwallet?.bitcoin;
           if (!okxwallet) {
             window.open('https://www.okx.com/web3', '_blank');
             if (walletError) {
@@ -506,7 +508,7 @@ export default function Home() {
           address = accounts[0];
           try {
             pubkey = await okxwallet.getPublicKey();
-          } catch (e) {
+          } catch {
             console.warn('Could not get pubkey from OKX');
           }
         }
@@ -540,10 +542,11 @@ export default function Home() {
         } else {
           throw new Error(data?.error || 'Connection failed');
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error('Wallet connection error:', err);
         if (walletError) {
-          walletError.textContent = err.message || 'Connection failed';
+          const error = err as { message?: string };
+          walletError.textContent = error.message || 'Connection failed';
           walletError.style.color = '#ff0000';
           walletError.style.display = 'block';
         }

@@ -22,8 +22,9 @@ export async function POST(req: Request) {
 
     await db.insert(emails).values({ email });
     return NextResponse.json({ ok: true }, { status: 201 });
-  } catch (err: any) {
-    if (err?.issues) {
+  } catch (err: unknown) {
+    const error = err as { issues?: unknown };
+    if (error?.issues) {
       return NextResponse.json({ ok: false, error: 'Invalid email' }, { status: 400 });
     }
     console.error('email signup error', err);

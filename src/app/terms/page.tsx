@@ -14,7 +14,7 @@ export default function TermsOfUse() {
       <p>If you do not agree, do not use or participate in OSD.WTF or any of its affiliated channels.</p>
 
       <h2>2. What OSD.WTF Is</h2>
-      <p>OSD.WTF is an open-format broadcast platform — a mix of live discussions, cultural commentary, and educational programming built around Bitcoin culture and creative ecosystems.</p>
+      <li>OSD.WTF is a public, community-driven broadcast project. We host live audio Spaces on X (formerly Twitter) that are open to anyone. Because these sessions are public, participants should understand how recordings, clips, and content may be used or archived.</li>
       <p>We host live Spaces, interviews, and community events that are primarily conversational, unfiltered, and public.</p>
 
       <h2>3. Eligibility and Conduct</h2>
@@ -42,7 +42,7 @@ export default function TermsOfUse() {
         <li>OSD.WTF hosts may enable or disable recording on X (Twitter) Spaces at their discretion.</li>
         <li>When recording is active, X will display a "REC" indicator visible to all participants.</li>
         <li>Even when a Space is not publicly recorded, X retains internal copies for 30–120 days for moderation.</li>
-        <li>OSD.WTF may access these archives within that retention window to identify and save notable moments.</li>
+        <li>All OSD.WTF Spaces are public. Anyone with an X account can join, listen, and speak if granted &quot;speaker&quot; access by a host.</li>
         <li>Any retrieved clip will not be used or published without obtaining verbal or written consent from identifiable participants.</li>
         <li>If any participant later requests a takedown, OSD.WTF may remove or edit the content at its discretion.</li>
       </ul>
@@ -51,7 +51,7 @@ export default function TermsOfUse() {
       <p>Spaces are public discussions.</p>
       <p>OSD.WTF cannot control or prevent listeners, anonymous participants, or third-party tools from recording or redistributing live audio without our knowledge.</p>
       <p>By joining a Space, you acknowledge that other participants may record, quote, or rebroadcast what is said.</p>
-      <p>OSD.WTF is not responsible for any third-party recordings, reposts, or derivative uses created outside its official channels.</p>
+      <li>OSD.WTF is not responsible for statements made by third parties, nor for actions taken based on information shared in live or recorded broadcasts.</li>
 
       <h2>7. No Financial or Legal Advice</h2>
       <p>All content produced by OSD.WTF — including live discussions, recordings, or published clips — is provided for educational and entertainment purposes only.</p>
@@ -59,7 +59,8 @@ export default function TermsOfUse() {
       <p>Always verify information independently before acting or transacting.</p>
 
       <h2>8. Views and Opinions</h2>
-      <p>Views expressed by speakers, guests, or listeners are their own and do not represent the opinions, positions, or policies of OSD.WTF, OSD (Ordinals Support Desk), or any affiliated partner.</p>
+      <p>Views expressed by speakers, guests, or listeners are their own</p>
+      <li>Opinions expressed belong solely to the individual speakers. They do not represent the views of OSD.WTF, OSD (Ordinals Support Desk), its hosts, or partners.</li>
       <p>We do not endorse or guarantee the accuracy of any statements made during live or recorded discussions.</p>
 
       <h2>9. Limitation of Liability</h2>

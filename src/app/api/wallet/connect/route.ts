@@ -23,8 +23,9 @@ export async function POST(req: Request) {
 
     await db.insert(wallets).values({ address, pubkey, verified: false });
     return NextResponse.json({ ok: true }, { status: 201 });
-  } catch (err: any) {
-    if (err?.issues) {
+  } catch (err: unknown) {
+    const error = err as { issues?: unknown };
+    if (error?.issues) {
       return NextResponse.json({ ok: false, error: 'Invalid payload' }, { status: 400 });
     }
     console.error('wallet connect error', err);

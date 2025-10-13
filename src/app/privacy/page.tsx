@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
       <strong>Last Updated:</strong> October 12, 2025</p>
 
       <h2>1. Overview</h2>
-      <p>OSD.WTF ("we," "our," or "us") respects your privacy.</p>
+      <p>OSD.WTF (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy.</p>
       <p>This Privacy Policy explains how we collect, use, and protect information when you visit our website, listen to our Spaces, participate in discussions, or engage with our content.</p>
       <p>We are a public, community-driven broadcast project operating under the OSD (Ordinals Support Desk) ecosystem. Our goal is transparency, education, and support — not data collection.</p>
 
@@ -78,13 +78,13 @@ export default function PrivacyPolicy() {
       <h3>a. Live Sessions</h3>
       <ul>
         <li>Spaces may be recorded, unrecorded, or clipped after broadcast.</li>
-        <li>When recording is active, X displays a "REC" icon visible to all.</li>
+        <li>When recording is active, X displays a &quot;REC&quot; icon visible to all.</li>
         <li>Even unrecorded Spaces may be temporarily stored by X for moderation.</li>
       </ul>
 
       <h3>b. Clip Creation</h3>
       <ul>
-        <li>OSD.WTF may review or retrieve content from X's archive within the 30–120 day retention window to create educational or promotional clips.</li>
+        <li>OSD.WTF may review or retrieve content from X&apos;s archive within the 30–120 day retention window to create educational or promotional clips.</li>
         <li>No clip will be published without prior verbal or written consent from identifiable speakers.</li>
         <li>If we cannot reach a participant, and they later request removal, the clip may be taken down at our discretion.</li>
       </ul>
@@ -98,9 +98,8 @@ export default function PrivacyPolicy() {
       <h2>7. Your Rights</h2>
       <p>Depending on your region, you may have rights to:</p>
       <ul>
-        <li>Access, correct, or delete personal information you've provided.</li>
-        <li>Request copies of data we hold about you.</li>
-        <li>Request removal of clips or recordings in which you appear.</li>
+        <li>Access, correct, or delete personal information you&apos;ve provided.</li>
+        <li>If you have concerns about how your data is handled, or if you&apos;d like to request removal of a clip or recording, contact us at:</li>
       </ul>
       <p>To make a request, email <a href="mailto:privacy@osd.wtf">privacy@osd.wtf</a> with sufficient detail to locate your data or content. We will respond as quickly as possible, typically within 10 business days.</p>
 
@@ -125,9 +124,8 @@ export default function PrivacyPolicy() {
       <p>We are not responsible for the content, security, or data practices of those third-party services. Their privacy policies govern any information collected through their tools.</p>
 
       <h2>12. Changes to This Policy</h2>
-      <p>We may update this Privacy Policy periodically.</p>
-      <p>Revisions will appear on this page with a new "Last Updated" date.</p>
-      <p>If major changes occur, we may post an announcement or pinned notice on X.</p>
+      <p>We may update this Privacy Policy from time to time. Changes will be posted here with an updated &quot;Last Updated&quot; date.</p>
+      <p>If you believe your privacy rights have been violated, you may file a complaint with your local data protection authority.</p>
 
       <h2>13. Contact Us</h2>
       <p>For questions, requests, or concerns about this Privacy Policy:<br />
