@@ -7,6 +7,7 @@ const handler = NextAuth({
       clientId: process.env.TWITTER_CLIENT_ID as string,
       clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
       version: "2.0",
+      authorization: { url: "https://x.com/i/oauth2/authorize" },
     }),
   ],
   session: { strategy: "jwt" },
