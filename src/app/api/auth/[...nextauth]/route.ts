@@ -4,6 +4,34 @@ import { getDb } from "../../../../db/client";
 import { profiles } from "../../../../db/schema";
 import { eq } from "drizzle-orm";
 
+type TwitterRawProfile = {
+  data?: {
+    id?: string;
+    username?: string;
+    name?: string;
+    profile_image_url?: string;
+  };
+  id?: string;
+  username?: string;
+  name?: string;
+  picture?: string;
+};
+
+function parseTwitterProfile(profile: unknown): {
+  id?: string;
+  username?: string;
+  name?: string;
+  picture?: string;
+} {
+  const p = profile as TwitterRawProfile | undefined;
+  return {
+    id: p?.data?.id ?? p?.id,
+    username: p?.data?.username ?? p?.username,
+    name: p?.data?.name ?? p?.name,
+    picture: p?.data?.profile_image_url ?? p?.picture,
+  };
+}
+
 const handler = NextAuth({
   providers: [
     TwitterProvider({
@@ -23,10 +51,11 @@ const handler = NextAuth({
       try {
         if (account?.provider === "twitter") {
           const db = getDb();
-          const xUserId = account.providerAccountId || (profile as any)?.data?.id || (profile as any)?.id;
-          const handle = (profile as any)?.data?.username || (profile as any)?.username || undefined;
-          const name = user?.name || (profile as any)?.data?.name || (profile as any)?.name || undefined;
-          const image = user?.image || (profile as any)?.data?.profile_image_url || (profile as any)?.picture || undefined;
+          const { id: rawId, username, name: profName, picture } = parseTwitterProfile(profile);
+          const xUserId = account.providerAccountId ?? rawId ?? undefined;
+          const handle = username;
+          const name = user?.name ?? profName ?? undefined;
+          const image = user?.image ?? picture ?? undefined;
           if (xUserId) {
             const existing = await db.select().from(profiles).where(eq(profiles.xUserId, xUserId)).limit(1);
             if (!existing.length) {

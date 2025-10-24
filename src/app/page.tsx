@@ -402,7 +402,7 @@ export default function Home() {
           // If CSRF missing for any reason, fall back to GET
           window.location.href = `/api/auth/signin/twitter?callbackUrl=${encodeURIComponent(callbackAbs)}`;
         }
-      } catch (e) {
+      } catch {
         // Fallback: use GET redirect which will still land on provider
         const callbackAbs = `${window.location.origin}/`;
         window.location.href = `/api/auth/signin/twitter?callbackUrl=${encodeURIComponent(callbackAbs)}`;
