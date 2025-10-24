@@ -372,19 +372,41 @@ export default function Home() {
     });
 
     document.getElementById('xConnectBtn')?.addEventListener('click', async () => {
-      // Create a form and submit it to trigger immediate OAuth redirect
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = '/api/auth/signin/twitter';
-      
-      const csrfInput = document.createElement('input');
-      csrfInput.type = 'hidden';
-      csrfInput.name = 'callbackUrl';
-      csrfInput.value = '/';
-      form.appendChild(csrfInput);
-      
-      document.body.appendChild(form);
-      form.submit();
+      try {
+        // Fetch CSRF token required by NextAuth to allow direct POST
+        const res = await fetch('/api/auth/csrf', { credentials: 'include' });
+        const data = await res.json();
+        const csrfToken = data?.csrfToken || '';
+        const callbackAbs = `${window.location.origin}/`;
+
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/api/auth/signin/twitter';
+
+        const csrf = document.createElement('input');
+        csrf.type = 'hidden';
+        csrf.name = 'csrfToken';
+        csrf.value = csrfToken;
+        form.appendChild(csrf);
+
+        const callback = document.createElement('input');
+        callback.type = 'hidden';
+        callback.name = 'callbackUrl';
+        callback.value = callbackAbs;
+        form.appendChild(callback);
+
+        document.body.appendChild(form);
+        if (csrfToken) {
+          form.submit();
+        } else {
+          // If CSRF missing for any reason, fall back to GET
+          window.location.href = `/api/auth/signin/twitter?callbackUrl=${encodeURIComponent(callbackAbs)}`;
+        }
+      } catch (e) {
+        // Fallback: use GET redirect which will still land on provider
+        const callbackAbs = `${window.location.origin}/`;
+        window.location.href = `/api/auth/signin/twitter?callbackUrl=${encodeURIComponent(callbackAbs)}`;
+      }
     });
 
     const walletPopup = document.getElementById('walletSelectionPopup');
@@ -639,18 +661,134 @@ export default function Home() {
           <button className="popup-close" id="popupClose">X CLOSE</button>
         </div>
         <div className="popup-content">
-          <div className="popup-line"><span className="popup-line-number">001</span><span className="popup-line-content"></span></div>
-          <div className="popup-line"><span className="popup-line-number">002</span><span className="popup-line-content"><strong>■ ABOUT OSD</strong></span></div>
-          <div className="popup-line"><span className="popup-line-number">003</span><span className="popup-line-content"></span></div>
-          <div className="popup-line"><span className="popup-line-number">004</span><span className="popup-line-content">OSD, the Ordinals Support Desk, is a pioneering community platform</span></div>
-          <div className="popup-line"><span className="popup-line-number">005</span><span className="popup-line-content">that originated on Twitter/X Spaces with a mission to democratize</span></div>
-          <div className="popup-line"><span className="popup-line-number">006</span><span className="popup-line-content">knowledge about Bitcoin Ordinals.</span></div>
-          <div className="popup-line"><span className="popup-line-number">007</span><span className="popup-line-content"></span></div>
-          <div className="popup-line"><span className="popup-line-number">008</span><span className="popup-line-content">Founded as a 24/7 live audio space, OSD quickly evolved into the</span></div>
-          <div className="popup-line"><span className="popup-line-number">009</span><span className="popup-line-content">premier destination for anyone interested in learning about Ordinals—</span></div>
-          <div className="popup-line"><span className="popup-line-number">010</span><span className="popup-line-content">a revolutionary protocol built on Bitcoin that enables on-chain</span></div>
-          <div className="popup-line"><span className="popup-line-number">011</span><span className="popup-line-content">digital artifacts through the inscription of data directly onto</span></div>
-          <div className="popup-line"><span className="popup-line-number">012</span><span className="popup-line-content">satoshis.</span></div>
+          <iframe
+            title="About · OSD.WTF"
+            srcDoc={`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>About · OSD.WTF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="OSD.WTF: the uncut broadcast arm of OSD. Live Spaces. Real voices. No script. The new wave of radio online." />
+  <style>
+    :root{
+      --bg:#0b0b0b; --fg:#e7e7e7; --muted:#a8a8a8; --line:#1f1f1f; --accent:#F7931A;
+    }
+    html,body{margin:0;padding:0;background:transparent;color:var(--fg);font:16px/1.6 "Courier New", monospace}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1050px;margin:0 auto;padding:16px 20px}
+    header.hero{padding:0;border-bottom:0}
+    .eyebrow{letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-size:.8rem}
+    h1{font-size:2.1rem;line-height:1.25;margin:.25em 0}
+    .tagline{font-size:1.05rem;color:var(--muted);max-width:58ch}
+    .badge{display:inline-block;margin-top:12px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--muted)}
+    .grid{display:grid;gap:28px}
+    .two{grid-template-columns:1fr; }
+    @media (min-width:900px){ .two{grid-template-columns:1.1fr .9fr;} }
+    section{padding:36px 0;border-bottom:1px solid var(--line)}
+    h2{font-size:1.6rem;margin:0 0 12px}
+    h3{font-size:1.1rem;margin:20px 0 8px;color:var(--muted)}
+    p{margin:0 0 12px}
+    ul{margin:0 0 12px 1.2em;padding:0}
+    li{margin:6px 0}
+    .callout{border:1px solid var(--line);padding:18px;border-radius:0;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,0)); margin-top:16px}
+    .table{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+    .row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+    .row:first-child{border-top:0}
+    .cell{padding:14px 16px}
+    .cell.head{background:#101010;color:var(--muted);font-weight:600}
+    .footnote{color:var(--muted);font-size:.9rem}
+    html,body{scrollbar-width:thin;scrollbar-color:rgba(247,147,26,.3) rgba(0,0,0,.3)}
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:rgba(0,0,0,.3);border-left:1px solid rgba(100,100,100,.2)}
+    ::-webkit-scrollbar-thumb{background:rgba(247,147,26,.3)}
+    ::-webkit-scrollbar-thumb:hover{background:rgba(247,147,26,.5)}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <!-- HERO -->
+    <header class="hero" id="hero">
+      
+    </header>
+
+    <!-- WHAT WE DO -->
+    <section id="what-we-do" aria-labelledby="what-title">
+      
+      <div class="grid">
+        <div>
+          <p><strong>OSD.WTF</strong> is the uncut broadcast arm of <strong>OSD (Ordinals Support Desk)</strong>. A live community hotline for everything and anything crypto. We host Spaces that are raw, unfiltered, and alive: open discussions, launches, interviews, and cultural breakdowns.</p>
+          <p>We run live formats including: open mic, rolling conversation; live coverage during mints/events; scams/outages &amp; rapid guidance; culture, art, memes, the internet; uncut monthly interview series.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORIGIN STORY -->
+    <section id="origin" aria-labelledby="origin-title">
+      <h2 id="origin-title">How It Started</h2>
+      <p>OSD.WTF started as a 24-hour Space, an open line for anyone who had a question, a thought, or just needed a place to talk. It quickly became more than support. What began as a simple help Space evolved into a continuous broadcast, part support line, part pirate radio, part cultural lab.</p>
+      <p>As OSD (the desk) built its structure, OSD.WTF became the living counterpart, the heartbeat to OSD’s brain, a place where every voice could plug in and be heard.</p>
+    </section>
+
+    <!-- RELATIONSHIP -->
+    <section id="relationship" aria-labelledby="rel-title">
+      <h2 id="rel-title">OSD × OSD.WTF</h2>
+      <div class="table" role="table" aria-label="Relationship between OSD and OSD.WTF">
+        <div class="row" role="row">
+          <div class="cell head" role="columnheader">OSD (Support Desk)</div>
+          <div class="cell head" role="columnheader">OSD.WTF (Broadcast)</div>
+        </div>
+        <div class="row" role="row">
+          <div class="cell" role="cell">Structured documentation &amp; tutorials</div>
+          <div class="cell" role="cell">Live, uncut, chaotic conversations</div>
+        </div>
+        <div class="row" role="row">
+          <div class="cell" role="cell">Recorded guides &amp; workshops</div>
+          <div class="cell" role="cell">Open mic, cultural pulse, incident response</div>
+        </div>
+        <div class="row" role="row">
+          <div class="cell" role="cell">The <em>brain</em>: archive of knowledge</div>
+          <div class="cell" role="cell">The <em>heart</em>: live energy of culture</div>
+        </div>
+        <div class="row" role="row">
+          <div class="cell" role="cell">“How to”</div>
+          <div class="cell" role="cell">“Why it matters”</div>
+        </div>
+      </div>
+      <p class="footnote">Full circle: <strong>Learn on OSD</strong> → <strong>Live it on OSD.WTF</strong>.</p>
+    </section>
+
+    <!-- WHY IT MATTERS -->
+    <section id="why" aria-labelledby="why-title">
+      <h2 id="why-title">Why it matters</h2>
+      <p>Culture moves faster than documentation. <strong>OSD.WTF</strong> bridges that gap: the soundboard where builders, artists, and curious minds make sense of what’s next.</p>
+    </section>
+
+    <!-- JOIN / CTA -->
+    <section id="join" aria-labelledby="join-title">
+      <h2 id="join-title">Join us</h2>
+      <div class="grid">
+        <div>
+          <p>
+            Follow <a href="https://x.com/OSD_WTF" target="_blank" rel="noopener">@OSDWTF</a> for live raw &amp; uncut broadcasts •
+            Follow <a href="https://x.com/OrdSupportDesk" target="_blank" rel="noopener">@OrdSupportDesk</a> for tutorials &amp; guides •
+            Sponsor or collaborate: <a href="mailto:hello@osd.wtf">hello@osd.wtf</a>
+          </p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Disclaimer</strong>
+        <p>This discussion may be recorded or clipped for educational/cultural purposes. Views are speakers’ own and do not represent OSD.WTF. Never share private keys or personal data on a live mic.</p>
+        <p class="footnote">See: <a href="/recording-policy">Recording &amp; Clip Policy</a> • <a href="/privacy">Privacy Policy</a></p>
+      </div>
+      <p style="margin-top:16px"><em>OSD.WTF: broadcasting chaos disguised as support.</em></p>
+    </section>
+  </main>
+</body>
+</html>`}
+            style={{ width: '100%', height: '100%', border: 'none' }}
+          />
         </div>
       </div>
 
@@ -666,7 +804,7 @@ export default function Home() {
           <div className="popup-line"><span className="popup-line-number">003</span><span className="popup-line-content"></span></div>
           <div className="popup-line"><span className="popup-line-number">004</span><span className="popup-line-content">OSD.WTF is powered by community support and strategic partnerships.</span></div>
           <div className="popup-line"><span className="popup-line-number">005</span><span className="popup-line-content">We work with brands, protocols, and creators who align with our mission</span></div>
-          <div className="popup-line"><span className="popup-line-number">006</span><span className="popup-line-content">to educate and support the Bitcoin Ordinals ecosystem.</span></div>
+          <div className="popup-line"><span className="popup-line-number">006</span><span className="popup-line-content"></span></div>
           <div className="popup-line"><span className="popup-line-number">007</span><span className="popup-line-content"></span></div>
           <div className="popup-line"><span className="popup-line-number">008</span><span className="popup-line-content"></span></div>
           <div className="popup-line"><span className="popup-line-number">009</span><span className="popup-line-content"><strong>■ SPONSORSHIP OPPORTUNITIES</strong></span></div>
