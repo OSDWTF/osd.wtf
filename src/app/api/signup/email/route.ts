@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     const db = getDb();
 
     // Ensure a stable userId via cookie
-    const jar = cookies();
+    const jar = await cookies();
     let userId = jar.get('osd_uid')?.value;
     let setCookie = false;
     if (!userId) {
