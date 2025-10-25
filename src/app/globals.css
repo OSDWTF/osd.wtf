@@ -206,7 +206,7 @@ body::after {
 
 .popup-link:hover{text-decoration:underline}
 
-.legal-hub{max-width:800px;margin:0 auto;padding:40px;background:rgba(0,0,0,.7);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border:1px solid rgba(100,100,100,.3);position:relative;z-index:10}
+.legal-hub{max-width:800px;margin:0 auto;padding:40px;background:rgba(0,0,0,.7);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border:1px solid rgba(100,100,100,.3);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10}
 .legal-page{max-width:900px;margin:0 auto;padding:40px;background:rgba(0,0,0,.7);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border:1px solid rgba(100,100,100,.3);position:relative;z-index:10}
 .legal-hub h1,.legal-page h1{color:#F7931A;margin-bottom:20px}
 .legal-page h1{font-size:32px;margin-bottom:10px}
