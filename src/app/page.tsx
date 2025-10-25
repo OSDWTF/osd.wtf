@@ -634,8 +634,7 @@ export default function Home() {
             <div className="dropdown-item">\ CONTACT</div>
           </div>
         </div>
-
-        <div className="nav-item secondary">UNCUT_UNFILTERED_RAW_OSD.WTF</div>
+        
         <div className="nav-item tertiary" id="listenNow">LISTEN NOW</div>
         <div className="nav-item quaternary" id="signUpBtn">SIGN UP</div>
         <div className="nav-item quinary" id="datetime"></div>
