@@ -7,6 +7,7 @@ export default function Home() {
   useEffect(() => {
     // Add homepage class to body for fixed background
     document.body.classList.add('homepage');
+    document.documentElement.classList.add('homepage');
     
     const dropdownTrigger = document.getElementById('dropdownTrigger');
     const dropdownMenu = document.getElementById('dropdownMenu');
@@ -597,6 +598,7 @@ export default function Home() {
     return () => {
       // Remove homepage class on cleanup
       document.body.classList.remove('homepage');
+      document.documentElement.classList.remove('homepage');
       
       document.removeEventListener('click', closeOnOutside);
       document.removeEventListener('mousemove', onMouseMove);
