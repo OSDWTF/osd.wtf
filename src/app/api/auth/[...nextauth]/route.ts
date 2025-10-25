@@ -1,8 +1,9 @@
 import NextAuth from "next-auth";
 import TwitterProvider from "next-auth/providers/twitter";
 import { getDb } from "../../../../db/client";
-import { profiles } from "../../../../db/schema";
-import { eq } from "drizzle-orm";
+import { profiles, users, counters } from "../../../../db/schema";
+import { cookies } from "next/headers";
+import { eq, sql } from "drizzle-orm";
 
 type TwitterRawProfile = {
   data?: {
@@ -56,10 +57,31 @@ const handler = NextAuth({
           const handle = username;
           const name = user?.name ?? profName ?? undefined;
           const image = user?.image ?? picture ?? undefined;
+          const jar = await cookies();
+          let userId = jar.get('osd_uid')?.value || (globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
+
+          await db.insert(users).values({ id: userId }).onConflictDoNothing();
+
           if (xUserId) {
             const existing = await db.select().from(profiles).where(eq(profiles.xUserId, xUserId)).limit(1);
             if (!existing.length) {
-              await db.insert(profiles).values({ xUserId, handle, name, image });
+              await db.insert(profiles).values({ xUserId, handle, name, image, userId });
+            } else if (!existing[0].userId) {
+              await db.update(profiles).set({ userId, handle, name, image }).where(eq(profiles.xUserId, xUserId));
+            }
+          }
+
+          const u = await db.select({ osdNo: users.osdNo }).from(users).where(eq(users.id, userId)).limit(1);
+          if (u.length && (u[0].osdNo == null)) {
+            await db.insert(counters).values({ key: 'osd_no', value: 0 }).onConflictDoNothing();
+            const updated = await db
+              .update(counters)
+              .set({ value: sql`${counters.value} + 1` })
+              .where(eq(counters.key, 'osd_no'))
+              .returning({ value: counters.value });
+            const nextNo = updated[0]?.value;
+            if (nextNo) {
+              await db.update(users).set({ osdNo: nextNo }).where(eq(users.id, userId));
             }
           }
         }
