@@ -139,7 +139,7 @@ body::after {
   .popup-content{font-size:11px; padding:15px}
   .popup-line-number{font-size:10px; min-width:25px}
   /* Legal and other non-home pages: avoid iOS fixed background glitches */
-  body:not(.homepage){ background-attachment: scroll; overscroll-behavior: contain; }
+  body:not(.homepage){ background-attachment: scroll; background-size: contain; overscroll-behavior: contain; }
   html{ overscroll-behavior: none; }
 }
 @media (max-width:480px){
