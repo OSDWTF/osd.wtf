@@ -58,7 +58,7 @@ const handler = NextAuth({
           const name = user?.name ?? profName ?? undefined;
           const image = user?.image ?? picture ?? undefined;
           const jar = await cookies();
-          let userId = jar.get('osd_uid')?.value || (globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
+          const userId = jar.get('osd_uid')?.value || (globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
 
           await db.insert(users).values({ id: userId }).onConflictDoNothing();
 

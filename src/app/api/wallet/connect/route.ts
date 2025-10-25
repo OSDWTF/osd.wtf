@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     // Ensure a stable userId via cookie
     const jar = await cookies();
-    let userId = jar.get('osd_uid')?.value || (globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
+    const userId = jar.get('osd_uid')?.value || (globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
 
     // Create user if missing
     await db.insert(users).values({ id: userId }).onConflictDoNothing();
