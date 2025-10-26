@@ -79,7 +79,7 @@ export default function RecordingPolicy() {
       <p>Continued participation after an update constitutes acceptance of the revised policy.</p>
 
       <h2>11. Contact</h2>
-      <p>For questions or concerns about this policy, contact <a href="mailto:clips@osd.wtf">clips@osd.wtf</a>.</p>
+      <p>For questions or concerns about this policy, contact <a href="mailto:privacy@osd.wtf">privacy@osd.wtf</a>.</p>
       <p>🕊 X (Twitter): <a href="https://x.com/OSDWTF" target="_blank">@OSDWTF</a></p>
     </article>
   );
