@@ -60,7 +60,7 @@ export default function TermsOfUse() {
 
       <h2>8. Views and Opinions</h2>
       <p>Views expressed by speakers, guests, or listeners are their own</p>
-      <li>Opinions expressed belong solely to the individual speakers. They do not represent the views of OSD.WTF, OSD (Ordinals Support Desk), its hosts, or partners.</li>
+      <li>Opinions expressed belong solely to the individual speakers. They do not represent the views of OSD.WTF, OSD, its hosts, or partners.</li>
       <p>We do not endorse or guarantee the accuracy of any statements made during live or recorded discussions.</p>
 
       <h2>9. Limitation of Liability</h2>
@@ -91,7 +91,7 @@ export default function TermsOfUse() {
       <p>Continued use of the site or participation in Spaces after changes are posted constitutes acceptance of the revised Terms.</p>
 
       <h2>14. Governing Law</h2>
-      <p>These Terms are governed by and construed in accordance with the laws of the State of Texas, USA, without regard to conflict-of-law principles.</p>
+      <p>These Terms are governed by and construed in accordance with the laws of the United States of America, without regard to conflict-of-law principles.</p>
       <p>Any disputes will be resolved under Texas jurisdiction unless otherwise agreed in writing.</p>
 
       <h2>15. Contact</h2>

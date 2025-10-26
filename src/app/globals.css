@@ -62,6 +62,13 @@ body:not(.homepage) {
   background-image: none;
 }
 
+/* Remove background image on legal-related pages */
+html:has(.legal-hub)::before,
+html:has(.legal-page)::before {
+  content: none !important;
+  display: none !important;
+}
+
 body.homepage {
   overflow: hidden;
   height: 100dvh;

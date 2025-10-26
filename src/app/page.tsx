@@ -608,12 +608,7 @@ export default function Home() {
       ro?.disconnect();
       window.removeEventListener('orientationchange', positionRedDot);
       document.removeEventListener('visibilitychange', onVis);
-      if (menuIcon) {
-        menuIcon.replaceWith(menuIcon.cloneNode(true));
-      }
-      if (navContainer) {
-        navContainer.replaceWith(navContainer.cloneNode(true));
-      }
+      // Do not replace React-managed nodes to avoid unmount errors
     };
   }, []);
 
@@ -719,8 +714,7 @@ export default function Home() {
       
       <div class="grid">
         <div>
-          <p><strong>OSD.WTF</strong> is the uncut broadcast arm of <strong>OSD (Ordinals Support Desk)</strong>. A live community hotline for everything and anything crypto. We host Spaces that are raw, unfiltered, and alive: open discussions, launches, interviews, and cultural breakdowns.</p>
-          <p>We run live formats including: open mic, rolling conversation; live coverage during mints/events; scams/outages &amp; rapid guidance; culture, art, memes, the internet; uncut monthly interview series.</p>
+          <p><strong>OSD.WTF</strong> is the uncut broadcast arm of <strong>OSD (Support Desk)</strong>. A live community hotline for everything and anything. We host Spaces that are raw, unfiltered, and alive: open discussions, launches, interviews, and cultural breakdowns.</p>
         </div>
       </div>
     </section>
@@ -730,34 +724,6 @@ export default function Home() {
       <h2 id="origin-title">How It Started</h2>
       <p>OSD.WTF started as a 24-hour Space, an open line for anyone who had a question, a thought, or just needed a place to talk. It quickly became more than support. What began as a simple help Space evolved into a continuous broadcast, part support line, part pirate radio, part cultural lab.</p>
       <p>As OSD (the desk) built its structure, OSD.WTF became the living counterpart, the heartbeat to OSD’s brain, a place where every voice could plug in and be heard.</p>
-    </section>
-
-    <!-- RELATIONSHIP -->
-    <section id="relationship" aria-labelledby="rel-title">
-      <h2 id="rel-title">OSD × OSD.WTF</h2>
-      <div class="table" role="table" aria-label="Relationship between OSD and OSD.WTF">
-        <div class="row" role="row">
-          <div class="cell head" role="columnheader">OSD (Support Desk)</div>
-          <div class="cell head" role="columnheader">OSD.WTF (Broadcast)</div>
-        </div>
-        <div class="row" role="row">
-          <div class="cell" role="cell">Structured documentation &amp; tutorials</div>
-          <div class="cell" role="cell">Live, uncut, chaotic conversations</div>
-        </div>
-        <div class="row" role="row">
-          <div class="cell" role="cell">Recorded guides &amp; workshops</div>
-          <div class="cell" role="cell">Open mic, cultural pulse, incident response</div>
-        </div>
-        <div class="row" role="row">
-          <div class="cell" role="cell">The <em>brain</em>: archive of knowledge</div>
-          <div class="cell" role="cell">The <em>heart</em>: live energy of culture</div>
-        </div>
-        <div class="row" role="row">
-          <div class="cell" role="cell">“How to”</div>
-          <div class="cell" role="cell">“Why it matters”</div>
-        </div>
-      </div>
-      <p class="footnote">Full circle: <strong>Learn on OSD</strong> → <strong>Live it on OSD.WTF</strong>.</p>
     </section>
 
     <!-- WHY IT MATTERS -->
@@ -783,7 +749,6 @@ export default function Home() {
         <p>This discussion may be recorded or clipped for educational/cultural purposes. Views are speakers’ own and do not represent OSD.WTF. Never share private keys or personal data on a live mic.</p>
         <p class="footnote">See: <a href="/recording-policy">Recording &amp; Clip Policy</a> • <a href="/privacy">Privacy Policy</a></p>
       </div>
-      <p style="margin-top:16px"><em>OSD.WTF: broadcasting chaos disguised as support.</em></p>
     </section>
   </main>
 </body>

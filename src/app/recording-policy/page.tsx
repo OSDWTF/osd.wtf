@@ -12,7 +12,6 @@ export default function RecordingPolicy() {
       <h2>1. Overview</h2>
       <p>This policy explains how OSD.WTF handles the recording, archiving, and use of audio content from live Spaces and other broadcasts.</p>
       <p>Our goal is to respect community consent while preserving cultural moments worth sharing.</p>
-      <p>We operate transparently — if something is being recorded, you&apos;ll know.</p>
 
       <h2>2. Recording Status</h2>
       <ul>
@@ -71,7 +70,7 @@ export default function RecordingPolicy() {
       <h2>9. Views & Liability Disclaimer</h2>
       <p>All Spaces are public, unscripted discussions.</p>
       <p>Opinions expressed belong solely to the individual speakers.</p>
-      <p>They do not represent the views of OSD.WTF, OSD (Ordinals Support Desk), its hosts, or partners.</p>
+      <p>They do not represent the views of OSD.WTF, OSD, its hosts, or partners.</p>
       <p>OSD.WTF assumes no liability for statements made by third parties, nor for actions taken based on information shared in live or recorded broadcasts.</p>
 
       <h2>10. Policy Updates</h2>

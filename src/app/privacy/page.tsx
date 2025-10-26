@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
       <h2>1. Overview</h2>
       <p>OSD.WTF (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy.</p>
       <p>This Privacy Policy explains how we collect, use, and protect information when you visit our website, listen to our Spaces, participate in discussions, or engage with our content.</p>
-      <p>We are a public, community-driven broadcast project operating under the OSD (Ordinals Support Desk) ecosystem. Our goal is transparency, education, and support — not data collection.</p>
+      <p>We are a public, community-driven broadcast project operating under the OSD ecosystem. Our goal is transparency, education, and support — not data collection.</p>
 
       <h2>2. What We Collect</h2>
       <p>We collect only the minimal information necessary to operate, communicate, and improve OSD.WTF.</p>
@@ -26,14 +26,14 @@ export default function PrivacyPolicy() {
         <li>Referring website or link</li>
         <li>General analytics data (page views, time spent, etc.)</li>
       </ul>
-      <p>We use privacy-respecting tools (like Plausible or similar) to monitor site performance without tracking individuals.</p>
+      
 
       <h3>b. Voluntary Information</h3>
       <p>You may provide information voluntarily when:</p>
       <ul>
         <li>Submitting a contact or sponsorship form</li>
         <li>Signing up for updates or a newsletter</li>
-        <li>Sending an email or DM to the OSD.WTF team</li>
+        <li>Sending an email or DM to OSD.WTF</li>
       </ul>
       <p>This may include your name, email, social handle, or project name. We use this information only to reply or provide requested materials.</p>
 
@@ -71,7 +71,7 @@ export default function PrivacyPolicy() {
         <li>Contact and sponsor form submissions are retained only as long as needed to complete correspondence.</li>
         <li>Analytics data is anonymized and used for aggregated reporting.</li>
         <li>If you participate in a Space, any internal X recordings are held by X (not OSD.WTF) for up to 30 days, or 120 days if under moderation review.</li>
-        <li>OSD.WTF does not permanently store user audio or metadata unless a clip is created with consent.</li>
+        <li>OSD.WTF does not permanently store user audio or metadata unless a clip is created.</li>
       </ul>
 
       <h2>6. Recording, Archives & Clip Usage</h2>
