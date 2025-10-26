@@ -746,8 +746,7 @@ export default function Home() {
       </div>
       <div class="callout">
         <strong>Disclaimer</strong>
-        <p>This discussion may be recorded or clipped for educational/cultural purposes. Views are speakers’ own and do not represent OSD.WTF. Never share private keys or personal data on a live mic.</p>
-        <p class="footnote">See: <a href="/recording-policy">Recording &amp; Clip Policy</a> • <a href="/privacy">Privacy Policy</a></p>
+        <p>Views are speakers’ own and do not represent OSD.WTF. Never share private keys or personal data on a live mic.</p>
       </div>
     </section>
   </main>
