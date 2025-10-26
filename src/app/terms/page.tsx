@@ -92,7 +92,6 @@ export default function TermsOfUse() {
 
       <h2>14. Governing Law</h2>
       <p>These Terms are governed by and construed in accordance with the laws of the United States of America, without regard to conflict-of-law principles.</p>
-      <p>Any disputes will be resolved under Texas jurisdiction unless otherwise agreed in writing.</p>
 
       <h2>15. Contact</h2>
       <p>For questions, complaints, or legal notices:<br />
